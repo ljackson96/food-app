@@ -22,15 +22,14 @@ ActiveRecord::Schema.define(version: 2020_05_05_005938) do
   end
 
   create_table "recipes", force: :cascade do |t|
+    t.string "title"
+    t.string "href"
+    t.integer "likes_id"
+    t.text "ingredients"
     t.string "thumbnail"
-    t.string "name"
-    t.integer "likes"
-    t.text "description"
-    t.integer "cook_time"
-    t.string "vid_url"
-    t.text "instruction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["likes_id"], name: "index_recipes_on_likes_id"
   end
 
   create_table "users", force: :cascade do |t|
