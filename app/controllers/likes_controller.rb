@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+    before_action :set_like
+
     def index
         @likes = Like.all
         json_response(@likes)
