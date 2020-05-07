@@ -1,7 +1,16 @@
 class RecipesController < ApplicationController
     def index
-        recipe = Recipe.all
-        render json: {status: 'SUCCESS', message: 'Recipes Loaded', data: recipe},status: :ok
+        @recipes = Recipe.all
+        json_response(@recipes)
+    end
+
+    def create
+        @recipe = Recipe.create!(recipe_params)
+        json_response(@recipe, :created)
+    end
+
+    def show
+        json_response(@recipe)
     end
     
 end
