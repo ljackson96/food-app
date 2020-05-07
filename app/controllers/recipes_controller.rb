@@ -12,5 +12,15 @@ class RecipesController < ApplicationController
     def show
         json_response(@recipe)
     end
+
+    private
+
+    def recipe_params
+        params.permit(:recipe)
+    end
+
+    def set_recipe
+        @recipe = Recipe.find(params[:recipe_id])
+    end
     
 end
